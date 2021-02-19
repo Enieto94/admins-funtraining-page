@@ -13,7 +13,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- <link rel="icon" href="/src/img/favicon.ico" type="image/ico" /> -->
-  <title>Dashboard Cliente - Funtraining </title>
+  <title>Dashboard Administrador - Funtraining </title>
   <!-- Bootstrap -->
   <link href="/src/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Font Awesome -->
@@ -40,7 +40,7 @@
               <img src="/src/img/user.png" alt="..." class="img-circle profile_img">
             </div>
             <div class="profile_info">
-              <h2>Cliente</h2>
+              <h2>Administrador</h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -51,7 +51,7 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/agenda/"> <i class="fa fa-calendar"></i>Agenda</a></li>
-                <li><a href="/datos-personales/"> <i class="fa fa-database"></i>Datos personales</a></li>
+                <li><a href="/clientes/"> <i class="fa fa-list-alt"></i>Clientes</a></li>
               </ul>
             </div>
           </div>
@@ -69,11 +69,10 @@
               <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                   data-toggle="dropdown" aria-expanded="false">
-                  <img src="/src/img/user.png" alt="">Cliente
+                  <img src="/src/img/user.png" alt="">Administrador
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#" id="btn-logout"><i class="fa fa-sign-out pull-right"></i>Cerrar
-                    Sesión</a>
+                  <a class="dropdown-item" href="#" id="btn-logout"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
                 </div>
               </li>
             </ul>
@@ -84,15 +83,6 @@
       <!-- page content -->
       <div class="right_col" role="main">
         <div class="container-fluid">
-          <h4>
-            <strong id="aclaratory">IMPORTANTE</strong> Nuestros Horarios son: 
-          </h4>
-          <h5>
-            <strong>Lunes a Viernes </strong> 5:00 AM - 12:00 PM / 4:00 PM - 10:00 PM
-          </h5>
-          <h5>
-           <strong>Sábados / Festivos</strong> 8:00 AM - 2:00 PM
-          </h5>
           <div id="calendar" class="col-md-12">
           </div>
           <!-- CREATE EVENT Modal -->

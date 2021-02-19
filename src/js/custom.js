@@ -5002,5 +5002,6 @@ function init_echarts() {
 $(document).ready(function () {
 
     init_sidebar();
+    init_DataTables();
 
 });	
