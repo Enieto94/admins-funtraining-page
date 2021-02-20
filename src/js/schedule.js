@@ -1,6 +1,6 @@
 async function getUserEvents() {
     try {
-        const serverResponse = await axios.get(`${API_URL}/users/${user.id}/events`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        const serverResponse = await axios.get(`${API_URL}/events`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
         const events = serverResponse.data.data;
         return events;
 

@@ -27,12 +27,12 @@ $("#btn-login").click(async function (event) {
     } else {
 
         try {
-            const serverResponse = await axios.post(`${API_URL}/auth/login`, { email, password });
+            const serverResponse = await axios.post(`${API_URL}/admins/login`, { email, password });
             const token = serverResponse.data;
             console.log("[SERVER RESPONSE]: ", JSON.stringify(token.token, 0, 2));
             setCookie("token", token.token);
 
-            const {data} = await axios.get(`${API_URL}/me`, { headers: { 'Authorization': `Bearer ${token.token}` } });
+            const {data} = await axios.get(`${API_URL}/admins/auth/me`, { headers: { 'Authorization': `Bearer ${token.token}` } });
             localStorage.setItem("user", JSON.stringify(data));
 
             window.location.href = '/agenda/';

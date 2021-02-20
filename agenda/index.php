@@ -51,7 +51,9 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/agenda/"> <i class="fa fa-calendar"></i>Agenda</a></li>
-                <li><a href="/clientes/"> <i class="fa fa-list-alt"></i>Clientes</a></li>
+                <li><a href="/administradores/"> <i class="fa fa-lock"></i>Administradores</a></li>
+                <li><a href="/clientes/"> <i class="fa fa-user"></i>Clientes</a></li>
+                <li><a href="/newsletter/"> <i class="fa fa-newspaper-o"></i>Newsletter users</a></li>
               </ul>
             </div>
           </div>

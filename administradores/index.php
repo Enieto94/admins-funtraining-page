@@ -48,17 +48,15 @@
         <p>Identificación</p>
         <input class="form-control" type="text" id="edit-identification" name="Identificacion">
         <p>Nombres</p>
-        <input class="form-control" type="text" id="edit-name" name="edit-name">
-        <p>Edad</p>
-        <input class="form-control" type="text" id="edit-age" name="edit-age">
-        <p>Peso</p>
-        <input class="form-control" type="text" id="edit-weight" name="edit-weight">
+        <input class="form-control" type="text" id="edit-name" name="nombres">
         <p>Correo</p>
-        <input class="form-control" type="text" id="edit-email" name="edit-email">
-        <p>Teléfono</p>
-        <input class="form-control" type="text" id="edit-cellphone" name="edit-cellphone">
-        <p>Lesiones / Heridas</p>
-        <textarea class="form-control" type="text" id="edit-wounds" name="edit-wounds"></textarea>
+        <input class="form-control" type="text" id="edit-email" name="correo">
+        <p>Estado</p>
+        <select class="form-control" id="edit-account-state">
+          <option value="seleccionar">-- Seleccionar --</option>
+          <option value="0">Desactivado</option>
+          <option value="1">Activado</option>
+        </select>
         <div style="width: 100%; display: flex; flex-direction: row;justify-content: center;">
           <button class="btn btn-primary" id="btn-update">Actualizar</button>
         </div>
@@ -71,16 +69,8 @@
         <input class="form-control" type="text" placeholder="" id="add-identification">
         <p>Nombres</p>
         <input class="form-control" type="text" placeholder="" id="add-name">
-        <p>Edad</p>
-        <input class="form-control" type="text" placeholder="" id="add-age">
-        <p>Peso</p>
-        <input class="form-control" type="text" placeholder="" id="add-weight">
         <p>Correo</p>
         <input class="form-control" type="text" placeholder="" id="add-email">
-        <p>Telefono</p>
-        <input class="form-control" type="text" placeholder="" id="add-cellphone">
-        <p>Lesiones / Heridas</p>
-        <textarea class="form-control" type="text" placeholder="" id="add-wounds"></textarea>
         <p>Contraseña</p>
         <input class="form-control" type="text" placeholder="" id="add-password">
         <div style="width: 100%; display: flex; flex-direction: row;justify-content: center;">
@@ -88,6 +78,7 @@
         </div>
       </div>
     </div>
+
   </div>
   <div class="container body">
     <div class="main_container">
@@ -169,12 +160,10 @@
                           <thead>
                             <tr>
                               <th>Id</th>
-                              <th># Identificación</th>
+                              <th>Identificación</th>
                               <th>Nombres</th>
-                              <th>Edad</th>
                               <th>Correo</th>
-                              <th>Número de celular</th>
-                              <th></th>
+                              <th>Acciones</th>
                             </tr>
                           </thead>
 
@@ -199,39 +188,42 @@
       </div>
     </div>
   </div>
- 
-<!-- jQuery -->
-<script src="/src/libs/jquery/jquery.min.js"></script>
 
-<!-- Bootstrap -->
-<script src="/src/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- jQuery -->
+  <script src="/src/libs/jquery/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/src/libs/bootstrap/js/bootstrap.min.js"></script>
-<!-- Datatables -->
-<script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
-<script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-<script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-<script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
-<script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-<script src="../vendors/jszip/dist/jszip.min.js"></script>
-<script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
-<script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+  <!-- Bootstrap -->
+  <script src="/src/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="/src/libs/sweetalert2/sweetalert2.all.min.js"></script>
-<script src="/src/libs/axios/axios.min.js"></script>
-<script src="/src/js/utils.js"></script>
-<!-- <script src="/src/js/datos-personales.js"></script> -->
-<!-- Custom js -->
-<script src="/src/js/custom.js"></script>
-<script src="/src/js/clientes.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/src/libs/bootstrap/js/bootstrap.min.js"></script>
+  <!-- Datatables -->
+  <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+  <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+  <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+  <script src="../vendors/jszip/dist/jszip.min.js"></script>
+  <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
+  <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+
+  <script src="/src/libs/sweetalert2/sweetalert2.all.min.js"></script>
+  <script src="/src/libs/axios/axios.min.js"></script>
+  <script src="/src/js/utils.js"></script>
+  <!-- <script src="/src/js/datos-personales.js"></script> -->
+  <!-- Custom js -->
+  <script src="/src/js/custom.js"></script>
+  <script src="/src/js/administradores.js"></script>
+
+  
+  
 </body>
 
 </html>
