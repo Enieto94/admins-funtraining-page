@@ -32,7 +32,7 @@ if (user === null) {
 
 $('#btn-logout').click(async function (event) {
     try {
-        await axios.post(`${API_URL}/auth/logout`, {}, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        await axios.post(`${API_URL}/admins/logout`, {}, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
         deleteCookie("token");
 
         user = null;

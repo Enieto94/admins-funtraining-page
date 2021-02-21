@@ -113,6 +113,7 @@
                               <th>Nombres</th>
                               <th>Email</th>
                               <th>Celular</th>
+                              <th></th>
                             </tr>
                           </thead>
                           <tbody>

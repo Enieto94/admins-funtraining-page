@@ -81,8 +81,12 @@ async function insertUser( userToInsert) {
                 resolve(data);
             },
             error: function (error) {
-                reject(error);
+                if (error.status === 409){
+                    reject("Este Número de identifición o correo ya existe");
+
+                }
             }
+            
         });
     });
 }

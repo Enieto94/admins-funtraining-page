@@ -59,7 +59,7 @@ async function updateEvent(event) {
 
 async function deleteEvent(eventId) {
     try {
-        await axios.delete(`${API_URL}/events/${eventId}`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        await axios.delete(`${API_URL}/admins/events/${eventId}`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
 
     } catch (error) {
         console.warn("ERROR: ", error);
