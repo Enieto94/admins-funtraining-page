@@ -163,11 +163,11 @@
   <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
   <script src="/src/libs/sweetalert2/sweetalert2.all.min.js"></script>
-  <script src="/src/libs/axios/axios.min.js"></script>
   <script src="/src/js/utils.js"></script>
   <!-- <script src="/src/js/datos-personales.js"></script> -->
   <!-- Custom js -->
   <script src="/src/js/custom.js"></script>
+  <script src="/src/libs/axios/axios.min.js"></script>
   <script src="/src/js/newsletter-users.js"></script>
 
 </body>
