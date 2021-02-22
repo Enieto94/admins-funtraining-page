@@ -34,6 +34,9 @@ function enviarMsj()
         $mail->CharSet = 'UTF-8';
         $mail->Subject = ("Inscrito a la plataforma Fun Training");
         $mail->MsgHTML($mail_HTML);
+        $mail->addAddress($_POST['email']);
+        $mail->addAddress("contactofuntraining@gmail.com");
+        $mail->addAddress("funtraininggym@gmail.com");
 
         if ($mail->Send()) {
             $jsonResponse = array(

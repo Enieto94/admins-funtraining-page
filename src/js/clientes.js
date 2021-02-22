@@ -306,12 +306,12 @@ $('#btn-insert').click(async function () {
             });
 
            var dataSend = {
-              solicitud: "enviarMsj",
-              name,
-              email,
-              password
-           }
-
+               solicitud: "enviarMsj",
+               name,
+               email,
+               password
+            }
+            
             $.ajax({
                 url: "../../controller/enviar-correo.php",
                 data: dataSend,
