@@ -65,36 +65,36 @@
       </div>
     </div>
 
-    <div class="modal-fade" id="modal-agregar">
+    <form action="./enviar.php" name="agregarUsuario" enctype="multipart/form-data" method="post" class="modal-fade" id="modal-agregar">
       <div class="modal-body text-center">
         <p>identificación</p>
         <input class="form-control" type="text" placeholder="" id="add-identification">
         <p>Nombres</p>
-        <input class="form-control" type="text" placeholder="" id="add-name">
+        <input class="form-control" type="text" placeholder="" id="add-name" name="name">
         <p>Edad</p>
         <input class="form-control" type="text" placeholder="" id="add-age">
         <p>Peso</p>
         <input class="form-control" type="text" placeholder="" id="add-weight">
         <p>Correo</p>
-        <input class="form-control" type="text" placeholder="" id="add-email">
+        <input class="form-control" type="text" placeholder="" id="add-email" name="email">
         <p>Telefono</p>
         <input class="form-control" type="text" placeholder="" id="add-cellphone">
         <p>Lesiones / Heridas</p>
         <textarea class="form-control" type="text" placeholder="" id="add-wounds"></textarea>
         <p>Contraseña</p>
-        <input class="form-control" type="text" placeholder="" id="add-password">
+        <input class="form-control" type="text" placeholder="" id="add-password" name="password">
         <div style="width: 100%; display: flex; flex-direction: row;justify-content: center;">
-          <button class="btn btn-success" id="btn-insert">Agregar</button>
+          <button type="submit" class="btn btn-success" id="btn-insert">Agregar</button>
         </div>
       </div>
-    </div>
+    </form>
   </div>
   <div class="container body">
     <div class="main_container">
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title">
+            <a href="./" class="site_title">
              <span>Fun Training</span>
               <img src="/src/img/logo-panel.jpg" id="logo-panel" alt="">
             </a>

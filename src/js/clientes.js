@@ -201,6 +201,8 @@ $('#btn-update').click(async function () {
                 timer: 1500
             });
 
+            document.agregarUsuario.submit();
+
         } catch (error) {
             Swal.fire({
                 icon: 'error',
