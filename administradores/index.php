@@ -57,6 +57,8 @@
           <option value="0">Desactivado</option>
           <option value="1">Activado</option>
         </select>
+        <p>Contraseña</p>
+        <input class="form-control" type="text" id="edit-password" name="password">
         <div style="width: 100%; display: flex; flex-direction: row;justify-content: center;">
           <button class="btn btn-primary" id="btn-update">Actualizar</button>
         </div>

@@ -102,6 +102,7 @@ $('#btn-update').click(async function () {
     let name = $('#edit-name').val();
     name = name.toUpperCase();
     const email = $('#edit-email').val();
+    const password = $('#edit-password').val();
 
     if (identification === '') {
         Swal.fire({
@@ -129,13 +130,15 @@ $('#btn-update').click(async function () {
             await updateAdmin(adminId, {
                 identification: identification,
                 name: name,
-                email: email
+                email: email,
+                password: password
             });
 
             $('#edit-id').val("");
             $('#edit-identification').val("");
             $('#edit-name').val("");
             $('#edit-email').val("");
+            $('#edit-password').val("");
 
             $('.modal-container').css('display', 'flex');
             $('.modal-fade').removeClass('active');
