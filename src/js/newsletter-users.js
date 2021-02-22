@@ -45,13 +45,18 @@ $("#btn-delete").click(async function(){
 
 $('#datatable').DataTable({
     ajax: {
-        "url": `${API_URL}/newsletterusers`,
-        "dataType": 'json',
-        "headers": {
+        url: `${API_URL}/newsletterusers`,
+        dataType: 'json',
+        headers: {
             "Authorization": `Bearer ${getCookie("token")}`
         },
-        "contentType": 'application/json',
-        "dataSrc": 'data'
+        contentType: 'application/json',
+        dataSrc: 'data',
+        error: function (error) {
+            if(error.status === 401){
+                window.location.href = "/";
+            }
+        }
     },
     columns: [
         { data: 'id' },
