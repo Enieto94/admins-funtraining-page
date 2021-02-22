@@ -22,7 +22,6 @@
     $mail->From     = $email;
     $mail->FromName = 'Contacto Fun Training';
     $mail->AddAddress($email); // Dirección a la que llegaran los mensajes.
-    $mail->AddAddress("funtraininggym@gmail.com"); // Dirección a la que llegaran los mensajes.
     $mail->AddAddress("contactofuntraining@gmail.com"); // Dirección a la que llegaran los mensajes.
    
 // Aquí van los datos que apareceran en el correo que reciba
@@ -48,7 +47,7 @@
     
     $mail->Send();
 
-    header("Location: https://admins.funtraining.net/agenda");
+    header("Location: https://admins.funtraining.net/clientes/");
 
 
 ?>
