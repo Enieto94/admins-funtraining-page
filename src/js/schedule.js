@@ -1,6 +1,6 @@
 async function getUserEvents() {
     try {
-        const serverResponse = await axios.get(`${API_URL}/events`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        const serverResponse = await axios.get(`${API_URL}/events/all`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
         const events = serverResponse.data.data;
         return events;
 
@@ -21,7 +21,7 @@ async function getUserEvents() {
 
 async function createEvent(event) {
     try {
-        const serverResponse = await axios.post(`${API_URL}/events`, event, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        const serverResponse = await axios.post(`${API_URL}/admins/events`, event, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
         return serverResponse.data;
 
     } catch (error) {
@@ -40,7 +40,7 @@ async function createEvent(event) {
 
 async function updateEvent(event) {
     try {
-        const serverResponse = await axios.put(`${API_URL}/events/${event.id}`, event, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        const serverResponse = await axios.put(`${API_URL}/admins/events/${event.id}`, event, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
         return serverResponse.data;
 
     } catch (error) {
