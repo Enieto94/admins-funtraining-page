@@ -67,7 +67,7 @@ async function prepareToUpdate(element) {
     }
 }
 
-async function insertUser( userToInsert) {
+async function insertUser(userToInsert) {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${API_URL}/users`,
@@ -81,12 +81,12 @@ async function insertUser( userToInsert) {
                 resolve(data);
             },
             error: function (error) {
-                if (error.status === 409){
+                if (error.status === 409) {
                     reject("Este Número de identifición o correo ya existe");
 
                 }
             }
-            
+
         });
     });
 }
@@ -192,16 +192,6 @@ $('#btn-update').click(async function () {
             $('.modal-container').css('display', 'flex');
             $('.modal-fade').removeClass('active');
             $("#btn-cerrar-popup").css('display', 'none');
-
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Usuario actualizado',
-                showConfirmButton: false,
-                timer: 1500
-            });
-
-            document.agregarUsuario.submit();
 
         } catch (error) {
             Swal.fire({
@@ -315,6 +305,21 @@ $('#btn-insert').click(async function () {
                 timer: 1500
             });
 
+           var dataSend = {
+              solicitud: "enviarMsj",
+              name,
+              email,
+              password
+           }
+
+            $.ajax({
+                url: "../../controller/enviar-correo.php",
+                data: dataSend,
+                method: "POST",
+                dataType: "JSON",
+                cache: false
+            })
+
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -324,6 +329,8 @@ $('#btn-insert').click(async function () {
             });
         }
     }
+
+
 });
 
 $('#datatable').DataTable({

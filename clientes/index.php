@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <form action="./enviar.php" name="agregarUsuario" enctype="multipart/form-data" method="post" class="modal-fade" id="modal-agregar">
+    <div class="modal-fade" id="modal-agregar">
       <div class="modal-body text-center">
         <p>identificación</p>
         <input class="form-control" type="text" placeholder="" id="add-identification">
@@ -87,7 +87,7 @@
           <button type="submit" class="btn btn-success" id="btn-insert">Agregar</button>
         </div>
       </div>
-    </form>
+    </div>
   </div>
   <div class="container body">
     <div class="main_container">
