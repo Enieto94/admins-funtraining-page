@@ -1,6 +1,6 @@
 form{
     width: 50%;
 }
-input,input::placeholder{
+input,input::placeholder,textarea{
     text-align: center;
 }
