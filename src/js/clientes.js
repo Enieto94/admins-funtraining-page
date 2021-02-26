@@ -377,5 +377,20 @@ $('#datatable').DataTable({
         {
             defaultContent: `<button class="col-12 btn btn-primary btn-editar" onclick="prepareToUpdate(this)">editar</button>`
         }
-    ]
+    ],
+    "links": {
+        "first": "https://api.funtraining.net/api/users?page=1",
+        "last": "https://api.funtraining.net/api/users?page=5",
+        "prev": null,
+        "next": "https://api.funtraining.net/api/users?page=2"
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 5,
+        "path": "https://api.funtraining.net/api/users",
+        "per_page": 15,
+        "to": 15,
+        "total": 73
+    }
 });
