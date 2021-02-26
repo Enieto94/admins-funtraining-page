@@ -101,14 +101,16 @@
                     <div class="form-group">
                       <label for="title" class="col-sm-4 control-label">Titulo</label>
                       <div class="col-sm-8">
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Titulo" disabled>
+                        <select class="form-control" id="title">
+                          <option value="seleccionar">-- Seleccionar --</option>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group">
                       <label for="color" class="col-sm-4 control-label">Color</label>
                       <div class="col-sm-8">
                         <select name="color" class="form-control" id="color" disabled>
-                          <option value="seleccionar">Seleccionar</option>
+                          <option value="seleccionar" selected>Seleccionar</option>
                           <option style="color:#0071c5;" value="#0071c5" selected>&#9724; Azul oscuro</option>
                           <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquesa</option>
                           <option style="color:#008000;" value="#008000">&#9724; Verde</option>
@@ -154,8 +156,9 @@
                     <div class="form-group">
                       <label for="title" class="col-sm-4 control-label">Titulo</label>
                       <div class="col-sm-8">
-                        <input type="text" name="edit-title" class="form-control" id="edit-title" placeholder="Titulo"
-                          disabled>
+                        <select class="form-control" id="edit-title" placeholder="Seleccionar usuario">
+                          <option value="seleccionar">-- Seleccionar --</option>
+                        </select>
                       </div>
                     </div>
                     <div class="form-group">
