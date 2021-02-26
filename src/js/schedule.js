@@ -1,4 +1,4 @@
-async function getUserEvents() {
+async function getEvents() {
     try {
         const serverResponse = await axios.get(`${API_URL}/events/all`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
         const events = serverResponse.data.data;
@@ -100,6 +100,30 @@ function updateEndDateSiblingInput(startInput, endInput) {
     $endInput.value = moment(startInput.value).minutes(0).add(1, 'hour').format('YYYY-MM-DDTHH:mm');
 }
 
+async function getUsers() {
+    try {
+        const serverResponse = await axios.get(`${API_URL}/users`, { headers: { 'Authorization': `Bearer ${getCookie("token")}` } });
+        const users = serverResponse.data.data;
+        return users;
+
+    } catch (error) {
+        console.warn("ERROR: ", error);
+        if (error.response.status === 401) {
+            window.location.href = "/";
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Problema interno.',
+                text: "Lo sentimos, ha surgido un problema interno. Intentalo más tarde"
+            });
+        }
+    }
+}
+
+function getUsersOptions(usersList) {
+    return usersList.map((user) => `<option value="${user.id}">${user.name}</option>`);
+}
+
 /**
  * INIT
  */
@@ -130,8 +154,12 @@ const holidays = [
 ]
 
 async function main() {
-    userEvents = await getUserEvents();
+    userEvents = await getEvents();
     const calendarElement = document.getElementById('calendar');
+    const usersList = await getUsers();
+    const usersOptionsHtml = getUsersOptions(usersList);
+    $('#title').append(usersOptionsHtml);
+    $('#edit-title').append(usersOptionsHtml);
 
     calendar = new FullCalendar.Calendar(calendarElement, {
         locale: 'es',
@@ -157,7 +185,6 @@ async function main() {
         dateClick: function (dateInfo) {
             let dateSelectedMonth = dateInfo.date.getMonth() + 1;
             const daySelectedFormated = moment(dateInfo.date).minutes(0).format('YYYY-MM-DDTHH:mm');
-            $('#ModalAdd #title').val(user.name);
             $('#ModalAdd #start').prop("min", `${dateInfo.date.getFullYear()}-${(dateSelectedMonth < 10) ? '0' + dateSelectedMonth : dateSelectedMonth}-${dateInfo.date.getDate()}T05:00`);
             $('#ModalAdd #start').prop("max", `${dateInfo.date.getFullYear()}-${(dateSelectedMonth < 10) ? '0' + dateSelectedMonth : dateSelectedMonth}-${dateInfo.date.getDate()}T21:00`);
             $('#ModalAdd #start').val(daySelectedFormated);
@@ -166,14 +193,16 @@ async function main() {
         },
         eventClick: function (info) {
             let eventSelected = info.event;
-
             let eventSelectedDateMonth = eventSelected.start.getMonth() + 1;
 
             $('#ModalEdit #edit-start').prop("min", `${eventSelected.start.getFullYear()}-${(eventSelectedDateMonth < 10) ? '0' + eventSelectedDateMonth : eventSelectedDateMonth}-${eventSelected.start.getDate()}T05:00`);
             $('#ModalEdit #edit-start').prop("max", `${eventSelected.start.getFullYear()}-${(eventSelectedDateMonth < 10) ? '0' + eventSelectedDateMonth : eventSelectedDateMonth}-${eventSelected.start.getDate()}T21:00`);
 
             $('#ModalEdit #edit-id').val(eventSelected.id);
-            $('#ModalEdit #edit-title').val(eventSelected.title);
+            const eventUser = usersList.find(user => user.name === eventSelected.title);
+            // console.log("EVENT USER: ", eventUser);
+            // console.log("EVENT USER: ", eventSelected.title);
+            $(`#ModalEdit #edit-title option[value="${eventUser}"]`).prop('selected', true);
             $('#ModalEdit #edit-color').val(eventSelected.backgroundColor);
             $('#ModalEdit #edit-start').val(moment(eventSelected.start).format('YYYY-MM-DDTHH:mm'));
             $('#ModalEdit #edit-end').val(moment(eventSelected.end).format('YYYY-MM-DDTHH:mm'));
@@ -183,61 +212,13 @@ async function main() {
 
     calendar.render();
 
-    // $('#calendar').fullCalendar({
-    //     header: {
-    //         language: 'es',
-    //         left: 'prev,next today',
-    //         center: 'title',
-    //         right: 'month,basicWeek,basicDay',
-    //     },
-    //     defaultDate: yyyy+"-"+mm+"-"+dd,
-    //     editable: true,
-    //     eventLimit: true, // allow "more" link when too many events
-    //     selectable: true,
-    //     selectHelper: true,
-    //     select: function(start, end) {
-    //         const check = moment(start).format('YYYY-MM-DD');
-    //         const actualYear = new Date().getFullYear();
-    //         const actualMonth = new Date().getMonth() + 1;
-    //         const actualDay = new Date().getDate();
-    //         const today = `${actualYear}-${(actualMonth < 10) ? '0' + actualMonth : actualMonth}-${(actualDay < 10) ? '0' + actualDay : actualDay}`;
-    //         const todayFormatted = moment(today).format('YYYY-MM-DD');
-
-    //         if(check < todayFormatted){
-    //             alert('la fecha es vieja,no se puede añadir el evento');
-
-    //         }else{
-    //             $('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
-    //             $('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
-    //             $('#ModalAdd').modal('show');
-    //         }
-    //     },
-    //     eventRender: function(event, element) {
-    //         element.bind('dblclick', function() {
-    //             $('#ModalEdit #id').val(event.id);
-    //             $('#ModalEdit #title').val(event.title);
-    //             $('#ModalEdit #color').val(event.color);
-    //             $('#ModalEdit').modal('show');
-    //         });
-    //     },
-    //     eventDrop: function(event, delta, revertFunc) { // si changement de position
-    //         // edit(event);
-    //         const eventEditted = editEvent(event);
-    //     },
-    //     eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
-    //         // edit(event);
-    //         deleteEvent(event);
-    //     },
-    //     events: userEvents
-    // });
 
 }
 main();
 
 $('#create-event-form').submit(async function (event) {
     event.preventDefault();
-
-    const newEventTitle = $('#title').val();
+    const newEventTitle = $("#title>option:selected").text();
     const newEventColor = $('#color').val();
     const newEventStart = $('#start').val();
     const newEventEnd = $('#end').val();
@@ -266,7 +247,8 @@ $('#edit-event-form').submit(async function (event) {
         $('#delete-event-checkbox').prop("checked", false);
 
     } else {
-        const edittingEventTitle = $('#edit-title').val();
+        const edittingEventTitle = $('#edit-title option:selected ').text();
+        console.log("texto option: ", $('#edit-title option:selected ').text());
         const edittingEventColor = "#0071c5";
         const edittingEventStart = $('#edit-start').val();
         const edittingEventEnd = $('#edit-end').val();
@@ -277,7 +259,7 @@ $('#edit-event-form').submit(async function (event) {
             color: edittingEventColor,
             start: moment(edittingEventStart).format('YYYY-MM-DD HH:mm:ss'),
             end: moment(edittingEventEnd).format('YYYY-MM-DD HH:mm:ss'),
-            user_id: user.id
+            user_id: $('#edit-title option:selected').val()
         });
 
         eventToEdit.remove();

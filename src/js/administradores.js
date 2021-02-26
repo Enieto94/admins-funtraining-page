@@ -246,6 +246,30 @@ $('#datatable').DataTable({
         "contentType": 'application/json',
         "dataSrc": 'data'
     },
+    language: {
+        "processing": "Cargando información...",
+        "lengthMenu": "Mostrar MENU filas",
+        "zeroRecords": "¡Aún no tienes información!",
+        "emptyTable": "¡Aún no tienes información!",
+        "info": "Del _START_ al _END_ , Total: _TOTAL_",
+        "infoEmpty": "¡No hay datos para mostrar!",
+        "infoFiltered": "(filtrado de un total de MAX registros)",
+        "infoPostFix": "",
+        search: "INPUT",
+        searchPlaceholder: "Buscar...",
+        "thousands": ",",
+        "loadingRecords": "Por Favor Espera - Cargando información...",
+        "paginate": {
+            "first": "Primero",
+            "last": "Último",
+            "next": 'Anterior',
+            "previous": 'Siguiente'
+        },
+        "aria": {
+            "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+            "sortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+    },
     columns: [
         { data: 'id' },
         { data: 'identification' },
