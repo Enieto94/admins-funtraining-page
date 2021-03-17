@@ -39,7 +39,7 @@ td {
 .modal-body {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 100%;
   background: #f3f3f3;
   color: #000;
   border-radius: 15px;
@@ -53,4 +53,16 @@ td {
   color: #fff;
   font-size: 30px;
   display:none;
+}
+.form-control{
+  height: unset;
+  padding: 5px;
+}
+.btn{
+  margin-top: 10px;
+}
+@media screen and (min-width: 768px){
+  .modal-body{
+    width: 40%;
+  }
 }
