@@ -87,7 +87,7 @@
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title">
+            <a href="./" class="site_title">
              <span>Fun Training</span>
               <img src="/src/img/logo-panel.jpg" id="logo-panel" alt="">
             </a>
@@ -96,7 +96,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_info">
-              <h2>Administrador</h2>
+              <h2>Admin</h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -107,7 +107,7 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/agenda/"> <i class="fa fa-calendar"></i>Agenda</a></li>
-                <li><a href="/administradores/"> <i class="fa fa-lock"></i>Administradores</a></li>
+                <li><a href="/administradores/"> <i class="fa fa-lock"></i>Admin</a></li>
                 <li><a href="/clientes/"> <i class="fa fa-user"></i>Clientes</a></li>
                 <li><a href="/newsletter/"> <i class="fa fa-newspaper-o"></i>Newsletter users</a></li>
               </ul>
@@ -127,7 +127,7 @@
               <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                   data-toggle="dropdown" aria-expanded="false">
-                  Administrador
+                  Admin
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#" id="btn-logout"><i class="fa fa-sign-out pull-right"></i>Cerrar
@@ -219,7 +219,7 @@
   <script src="/src/libs/sweetalert2/sweetalert2.all.min.js"></script>
   <script src="/src/libs/axios/axios.min.js"></script>
   <script src="/src/js/utils.js"></script>
-  <!-- <script src="/src/js/datos-personales.js"></script> -->
+  <script src="/src/js/dashboard-general-script.js"></script>
   <!-- Custom js -->
   <script src="/src/js/custom.js"></script>
   <script src="/src/js/administradores.js"></script>

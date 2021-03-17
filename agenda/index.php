@@ -40,7 +40,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_info">
-              <h2>Administrador</h2>
+              <h2>Admin</h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -51,7 +51,7 @@
               <h3>General</h3>
               <ul class="nav side-menu">
                 <li><a href="/agenda/"> <i class="fa fa-calendar"></i>Agenda</a></li>
-                <li><a href="/administradores/"> <i class="fa fa-lock"></i>Administradores</a></li>
+                <li><a href="/administradores/"> <i class="fa fa-lock"></i>Admin</a></li>
                 <li><a href="/clientes/"> <i class="fa fa-user"></i>Clientes</a></li>
                 <li><a href="/newsletter/"> <i class="fa fa-newspaper-o"></i>Newsletter users</a></li>
               </ul>
@@ -71,7 +71,7 @@
               <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown"
                   data-toggle="dropdown" aria-expanded="false">
-                  Administrador
+                  Admin
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#" id="btn-logout"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
@@ -210,10 +210,6 @@
         </div>
       </div>
       <!-- /page content -->
-      <!-- footer content -->
-      <footer>
-      </footer>
-      <!-- /footer content -->
     </div>
   </div>
   <!-- Custom Theme Scripts -->
@@ -225,7 +221,6 @@
   <script src="/src/js/custom.js"></script>
   <!-- Bootstrap Core JavaScript -->
   <script src="/src/libs/bootstrap/js/bootstrap.min.js"></script>
-  <!-- <?php include_once $_SERVER["DOCUMENT_ROOT"] . '/src/commons/common-scripts-caller.php';?> -->
   <!-- FullCalendar -->
   <script src='/src/libs/moment/moment.min.js'></script>
   <script src='/src/libs/fullcalendar/main.min.js'></script>
