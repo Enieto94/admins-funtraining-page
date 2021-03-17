@@ -94,7 +94,7 @@ async function insertUser(userToInsert) {
 
 
 $('#btn-cerrar-popup').click(function () {
-    $('.modal-container').css('display', 'flex');
+    $('.modal-container').css('display', 'none');
     $('.modal-fade').removeClass('active');
     $("#btn-cerrar-popup").css('display', 'none');
 });
@@ -189,7 +189,7 @@ $('#btn-update').click(async function () {
             $('#edit-cellphone').val("");
             $('#edit-wounds').val("");
 
-            $('.modal-container').css('display', 'flex');
+            $('.modal-container').css('display', 'none');
             $('.modal-fade').removeClass('active');
             $("#btn-cerrar-popup").css('display', 'none');
 
@@ -335,13 +335,41 @@ $('#btn-insert').click(async function () {
 
 $('#datatable').DataTable({
     ajax: {
+        responsive: true,
+        serverSide: true,
+        // url: 'http://localhost:64506/api/values',
+        // // dataType: 'text',
+        // type: 'post',
+        // contentType: 'application/x-www-form-urlencoded',
+        // data: {
+        //     RecordsStart: data.start,
+        //     PageSize: data.length
+        // },
+        // success: function( data, textStatus, jQxhr ){
+        //     callback({
+        //         // draw: data.draw,
+        //         data: data.Data,
+        //         recordsTotal:  data.TotalRecords,
+        //         recordsFiltered:  data.RecordsFiltered
+        //     });
+        // },
+        // error: function( jqXhr, textStatus, errorThrown ){
+        // }
+        paging: true,
+        pageLength: 5,
         "url": `${API_URL}/users`,
         "dataType": 'json',
         "headers": {
             "Authorization": `Bearer ${getCookie("token")}`
         },
         "contentType": 'application/json',
-        "dataSrc": 'data'
+        // "dataSrc": 'data',
+        "data": function ( d ) {
+            return JSON.stringify( d );
+          }
+
+          
+
     },
     language: {
         "processing": "Cargando información...",
@@ -350,17 +378,17 @@ $('#datatable').DataTable({
         "emptyTable": "¡Aún no tienes ingresos!",
         "info": "Del _START_ al _END_ , Total: _TOTAL_",
         "infoEmpty": "¡No hay datos para mostrar!",
-        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "infoFiltered": "(filtrado de un total de MAX registros)",
         "infoPostFix": "",
-        search: "INPUT",
+        search: "_INPUT_",
         searchPlaceholder: "Buscar...",
         "thousands": ",",
         "loadingRecords": "Por Favor Espera - Cargando información...",
         "paginate": {
             "first": "Primero",
             "last": "Último",
-            "next": 'Anterior',
-            "previous": 'Siguiente'
+            "next": 'Siguiente',
+            "previous": 'Anterior'
         },
         "aria": {
             "sortAscending": ": Activar para ordenar la columna de manera ascendente",
@@ -377,20 +405,5 @@ $('#datatable').DataTable({
         {
             defaultContent: `<button class="col-12 btn btn-primary btn-editar" onclick="prepareToUpdate(this)">editar</button>`
         }
-    ],
-    "links": {
-        "first": "https://api.funtraining.net/api/users?page=1",
-        "last": "https://api.funtraining.net/api/users?page=5",
-        "prev": null,
-        "next": "https://api.funtraining.net/api/users?page=2"
-    },
-    "meta": {
-        "current_page": 1,
-        "from": 1,
-        "last_page": 5,
-        "path": "https://api.funtraining.net/api/users",
-        "per_page": 15,
-        "to": 15,
-        "total": 73
-    }
+    ]
 });
