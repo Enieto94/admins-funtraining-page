@@ -202,7 +202,7 @@ async function main() {
             const eventUser = usersList.find(user => user.name === eventSelected.title);
             console.log("EVENT USER: ", eventUser);
             // console.log("EVENT USER: ", eventSelected.title);
-            $(`#ModalEdit #edit-title option[value="${eventUser.id}"]`).prop('selected', true);
+            $(`#ModalEdit #edit-title option[value="${user.id}"]`).prop('selected', true);
             $('#ModalEdit #edit-color').val(eventSelected.backgroundColor);
             $('#ModalEdit #edit-start').val(moment(eventSelected.start).format('YYYY-MM-DDTHH:mm'));
             $('#ModalEdit #edit-end').val(moment(eventSelected.end).format('YYYY-MM-DDTHH:mm'));
