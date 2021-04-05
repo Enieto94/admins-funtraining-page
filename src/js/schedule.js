@@ -163,7 +163,17 @@ async function main() {
 
     calendar = new FullCalendar.Calendar(calendarElement, {
         locale: 'es',
-        initialView: 'dayGridMonth', // ['dayGridMonth : DEFAULT', 'dayGridWeek', 'timeGridDay', 'listWeek']
+        initialView: 'diario', // ['dayGridMonth : DEFAULT', 'dayGridWeek', 'timeGridDay', 'listWeek']
+        headerToolbar: {
+            center: 'dayGridMonth,diario' // buttons for switching between views
+          },
+          views: {
+            diario: {
+              type: 'timeGrid',
+              duration: { days: 1 },
+              buttonText: 'Diario'
+            }
+        },
         timeZone: 'local',
         fixedWeekCount: false,
         validRange: {
@@ -200,9 +210,8 @@ async function main() {
 
             $('#ModalEdit #edit-id').val(eventSelected.id);
             const eventUser = usersList.find(user => user.name === eventSelected.title);
-            console.log("EVENT USER: ", eventUser);
-            // console.log("EVENT USER: ", eventSelected.title);
-            $(`#ModalEdit #edit-title option[value="${user.id}"]`).prop('selected', true);
+            console.log("EVENT USER: ", eventUser.id);
+            $(`#ModalEdit #edit-title option[value="${eventUser.id}"]`).prop('selected', true);
             $('#ModalEdit #edit-color').val(eventSelected.backgroundColor);
             $('#ModalEdit #edit-start').val(moment(eventSelected.start).format('YYYY-MM-DDTHH:mm'));
             $('#ModalEdit #edit-end').val(moment(eventSelected.end).format('YYYY-MM-DDTHH:mm'));
